@@ -20,7 +20,18 @@ namespace MsTestMethodAnalyserProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        
+        [TestMethod]
+        public void Given_message_return_In_Any_Mood_return_Happy_message()
+        {
+            //Arrange
+            string msg = "I am in Any Mood";
+            MoodAnalyser mood = new MoodAnalyser(msg);
+            //Act
+            string expected = "HAPPY";
+            string actual = mood.AnalyseMood();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
 
     }
