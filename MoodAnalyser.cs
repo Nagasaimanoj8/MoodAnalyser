@@ -9,47 +9,44 @@ namespace MoodAnalyserDemo
 {
     public class MoodAnalyser
     {
-        public string msg;
-        public MoodAnalyser(string msg)
-        {
-            this.msg = msg;
-        }
+        private string message;
 
+
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+            Console.WriteLine("parameterised constructor");
+            Console.WriteLine(message);
+        }
         public MoodAnalyser()
         {
-            this.msg = null;
+            this.message = null;
+            Console.WriteLine("default constructor");
         }
-
-        public string AnalyseMood()
+        public string AnalyserMethod()
         {
             try
             {
-                if (msg.ToLower().Contains(""))
-                    return "HAPPY";
-
-                else
-                    return "SAD";
-            }
-            catch (NullReferenceException ex)
-            {
-                throw new CustomException(CustomException.ExceptionType.Null_Type_Exception, "Message should not be null");
-            }
-        }
-
-        public string AnalyseMood1()
-        {
-            try
-            {
-                if (msg.ToLower().Contains(string.Empty))
+                if (!String.IsNullOrEmpty(message))
                 {
-                    return "happy";
+                    if (message.ToUpper().Contains("SAD"))
+                        return "SAD";
+                    else if (message.ToUpper().Contains("HAPPY") || message.ToUpper().Contains("ANY"))
+                        return "HAPPY";
+                    else
+                        return "HAPPY";
+                }
+                else if (this.message.Equals(string.Empty))
+                {
+                    throw new CustomException(CustomException.ExceptionType.Empty_Type_Exception, "mood should not be empty");
                 }
                 else
-                    return "sad";
+                    throw new NullReferenceException();
+
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
-                throw new CustomException(CustomException.ExceptionType.Empty_Type_Exception, "Message should not be empty");
+                throw new CustomException(CustomException.ExceptionType.Null_Type_Exception, "Mood Should not be NULL");
             }
         }
     }
