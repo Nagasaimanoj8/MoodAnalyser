@@ -148,6 +148,18 @@ namespace MsTestMethodAnalyserProject
             {
                 Assert.AreEqual("No such constructor found", exception.Message);
             }
+        }
+        //TC_5.1 - Given MoodAnalyser when proper message pass to Parameterized constructor then return mood analyser object
+        [TestMethod]
+        public void CreateParameterizedObjectOfMoodAnalyserClass()
+        {
+            //Arrange
+
+            MoodAnalyse mood = new MoodAnalyse();
+            //Act
+            var obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "HAPPY");
+            //Assert
+            obj.Equals(mood);
 
         }
 
