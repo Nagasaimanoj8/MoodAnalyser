@@ -58,6 +58,22 @@ namespace MsTestMethodAnalyserProject
                 Console.WriteLine("Worst Case Exception :" + ex);
             }
         }
+        //3.1: Given_Null_Mood_Should_Throw_MoodAnalysisCustomException_IndicatingNullMood
+        [TestMethod]
+        public void Given_Null_Mood_Should_Throw_MoodAnalysisCustomException_IndicatingNullMood()
+        {
+            try
+            {
+                string message = null;
+                MoodAnalyse mood = new MoodAnalyse(message);
+                string actual = mood.AnalyserMethod();
+            }
+
+            catch (CustomException exception)
+            {
+                Assert.AreEqual("Mood Should not be NULL", exception.Message);
+            }
+        }
     }
 }
         
