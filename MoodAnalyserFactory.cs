@@ -9,14 +9,10 @@ using System.Threading.Tasks;
 namespace MoodAnalyserDemo
 {
     public class MoodAnalyserFactory
-    {
-
-        
-
-            public static object CreateMoodAnalyse(string className, string constructor, string message)
+    {    
+        public static object CreateMoodAnalyse(string className, string constructor, string message)
             {
-                Type type = typeof(MoodAnalyser);
-
+                Type type = typeof(MoodAnalyse);
                 if (type.Name.Equals(className) || type.FullName.Equals(className))
                 {
                     if (type.Name.Equals(constructor))
@@ -27,7 +23,6 @@ namespace MoodAnalyserDemo
                     {
                         throw new CustomException(CustomException.ExceptionType.NO_SUCH_METHOD, "No such constructor found");
                     }
-
                 }
                 else
                 {
@@ -38,7 +33,7 @@ namespace MoodAnalyserDemo
             {
                 //Get the instance of the MoodAnalyserClass and create a constructor
                 object moodAnalysis = CreateMoodAnalyse(className, constructor, message);
-                Type type = typeof(MoodAnalyser);
+                Type type = typeof(MoodAnalyse);
                 try
                 {
                     //Fetching the method info using reflection
@@ -51,12 +46,11 @@ namespace MoodAnalyserDemo
                 {
                     throw new CustomException(CustomException.ExceptionType.NO_SUCH_METHOD, "method not found");
                 }
-
             }
             public static Object ChangingTheMoodDynamically(string message, string fieldName)
             {
                 // Get the type of the class
-                Type type = typeof(MoodAnalyser);
+                Type type = typeof(MoodAnalyse);
 
                 // Create an object of class
                 object mood = Activator.CreateInstance(type);
@@ -87,8 +81,6 @@ namespace MoodAnalyserDemo
                     throw new CustomException(CustomException.ExceptionType.Null_Type_Exception, "Mood should not be NULL");
                 }
             }
-
-
         }
     }
 
