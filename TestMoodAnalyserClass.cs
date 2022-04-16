@@ -211,6 +211,24 @@ namespace MsTestMethodAnalyserProject
             //Assert
             Assert.AreEqual("HAPPY", actual);
         }
+        [TestMethod]
+
+        //TC 6.2 : Given Improper method name must return mood analyser custom exception
+        public void GivenHappyMessage_WhenImproperMethod_ShouldThrowMoodAnalysisException()
+        {
+            //Act
+            try
+            {
+                MoodAnalyse mood = new MoodAnalyse("I am in happy mood");
+                object expected = mood.AnalyserMethod();
+                object actual = MoodAnalyserFactory.InvokeAnalyserMethod("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "i am in happy mood", "InvalidMethod");
+            }
+            catch (CustomException exception)
+            {
+                //Assert
+                Assert.AreEqual("method not found", exception.Message);
+            }
+        }
     }
 }
         
