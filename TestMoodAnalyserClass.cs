@@ -92,11 +92,11 @@ namespace MsTestMethodAnalyserProject
             object expected = new MoodAnalyser(msg);
             //Act
             object obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalyse", "MoodAnalyser");
-           //Assert
+            //Assert
             expected.Equals(obj);
         }
         /// TC-4.2 should throw NO_SUCH_CLASS exception.
-       [TestMethod]
+        [TestMethod]
         public void GivenClassNameImproper_ShouldReturnMoodAnalysisException()
         {
             //Arrange
@@ -105,6 +105,23 @@ namespace MsTestMethodAnalyserProject
             {
                 //Act
                 object actual = MoodAnalyserFactory.CreateMoodAnalyse("Mood.AnalyzeMood", "AnalyzeMood");
+            }
+            catch (CustomException e)
+            {
+                //Assert
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
+        /// TC-4.3 should throw NO_SUCH_CONTRUCTOR exception.
+        [TestMethod]
+        public void GivenConstructorNameImproper_ShouldReturnMoodAnalysisException()
+        {
+            //Arrange
+            string expected = "Constructor not found";
+            try
+            {
+                //Act
+                object actual = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyzer.AnalyzeMood", "MoodAnalyzer");
             }
             catch (CustomException e)
             {
