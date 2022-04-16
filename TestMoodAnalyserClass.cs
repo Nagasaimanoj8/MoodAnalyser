@@ -129,6 +129,18 @@ namespace MsTestMethodAnalyserProject
                 Assert.AreEqual(expected, e.Message);
             }
         }
+        /// TC-5.1 Returns the mood analyser object with parameterized constructor.
+        [TestMethod]
+        [TestCategory("Reflection")]
+        public void GivenMoodAnalyserParameterizedConstructor_ShouldReturnObject()
+        {
+            //Arrange
+            object expected = new MoodAnalyser("I am Parameter constructor");
+            //Act
+            object actual = MoodAnalyserFactory.MoodAnalyserParameterisedConstructor("MoodAnalyzer.AnalyzeMood", "AnalyzeMood", "I am Parameter constructor");
+            //Assert
+            expected.Equals(actual);
+        }
     }
 }
 
