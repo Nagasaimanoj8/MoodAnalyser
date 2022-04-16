@@ -197,7 +197,19 @@ namespace MsTestMethodAnalyserProject
             {
                 Assert.AreEqual("No such constructor found", exception.Message);
             }
+        }
+        [TestMethod]
+        //TC 6.1 : Given 'Happy' message when proper should return 'Happy Mood'.
 
+        public void GivenHappyMessage_InvokeAnalyseMoodMethod_ShouldReturnHappyMoodMessage()
+        {
+            //arrange
+            MoodAnalyse mood = new MoodAnalyse("I am in happy mood");
+
+            //Act
+            object actual = MoodAnalyserFactory.InvokeAnalyserMethod("MoodAnalyser.MoodAnalyse", "MoodAnalyse", "i am in happy mood", "AnalyserMethod");
+            //Assert
+            Assert.AreEqual("HAPPY", actual);
         }
     }
 }
