@@ -34,6 +34,25 @@ namespace MsTestMethodAnalyserProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        // 2.1[NullException]
+        [TestMethod]
+        public void Given_Empty_Mood_Should_Throw_MoodAnalysisCustomException_IndicatingEmptyMood()
+        {
+            //Arrange
+            string message = null;
+            string excepted = "Message cann't be null";
+            try
+            {
+                //Act
+                MoodAnalyse mood = new MoodAnalyse(message);
+                string actual = mood.AnalyserMethod();
+            }
+
+            catch (CustomException exception)
+            {
+                Assert.AreEqual("Mood Should not be empty", exception.Message);
+            }
+        }
     }
 }
 
