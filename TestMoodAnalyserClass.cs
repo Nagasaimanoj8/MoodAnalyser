@@ -180,6 +180,25 @@ namespace MsTestMethodAnalyserProject
             }
 
         }
+        //TC 5.3 When a wrong costructor name is passed then throw an exception
+        [TestMethod]
+        public void CreateParameterizedObjectOfMoodAnalyseInvalidConstructor()
+        {
+            //Arrange
+            MoodAnalyse mood = new MoodAnalyse();
+
+            //Act
+            try
+            {
+                var obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalyse", "MoodAnalyseWrong", "HAPPY");
+            }
+            //Assert
+            catch (CustomException exception)
+            {
+                Assert.AreEqual("No such constructor found", exception.Message);
+            }
+
+        }
     }
 }
         
