@@ -160,6 +160,24 @@ namespace MsTestMethodAnalyserProject
                 Assert.AreEqual(expected, e.Message);
             }
         }
+        /// TC-5.3 should throw NO_SUCH_CONSTRUCTOR exception with parameterized constructor.
+        [TestMethod]
+        [TestCategory("Reflection")]
+        public void GivenImproperParameterizedConstructorName_ShouldReturnMoodAnalysisException()
+        {
+            //Assert
+            string expected = "Constructor not found";
+            try
+            {
+                //Act
+                object actual = MoodAnalyserFactory.MoodAnalyserParameterisedConstructor("MoodAnalyzer.AnalyzeMood", "AnalyzeMod", "I am Parameter constructor");
+            }
+            catch (CustomException e)
+            {
+                //Assert
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
     }
 }
 
