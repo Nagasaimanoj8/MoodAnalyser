@@ -132,9 +132,28 @@ namespace MsTestMethodAnalyserProject
             }
 
         }
-    }    
+        //Test Case 4.3 To return exception for wrong constructor name
+        [TestMethod]
+        public void CreateObjectOfMoodAnalyserClassWithWrongConstructor()
+        {
+            //Arrange
+            MoodAnalyse mood = new MoodAnalyse();
+            //Act
+            try
+            {
+                var objectFromFactory = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalyse", "MoodAnalyseWrong", null);
+            }
+            //Assert
+            catch (CustomException exception)
+            {
+                Assert.AreEqual("No such constructor found", exception.Message);
+            }
 
-    
+        }
+
+    }
+
+
 }
         
 
