@@ -61,16 +61,18 @@ namespace MsTestMethodAnalyserProject
         //3.1: Given_Null_Mood_Should_Throw_MoodAnalysisCustomException_IndicatingNullMood
         [TestMethod]
         public void Given_Null_Mood_Should_Throw_MoodAnalysisCustomException_IndicatingNullMood()
-        {
+        {//Arrange
+            string message = null;
             try
             {
-                string message = null;
+                //Act
                 MoodAnalyse mood = new MoodAnalyse(message);
                 string actual = mood.AnalyserMethod();
             }
 
             catch (CustomException exception)
             {
+                //Assert
                 Assert.AreEqual("Mood Should not be NULL", exception.Message);
             }
         }
@@ -79,17 +81,19 @@ namespace MsTestMethodAnalyserProject
         [TestCategory("Empty Exception")]
         public void GivenEmptyShouldReturnCustomException()
         {
-            ///Follow AAA strategy
-            ///Arrange , Act and in last Assert
+            
+            ///Arrange 
             string message = "";
             string excepted = "Message cann't be Empty";
             try
             {
+                //Act
                 MoodAnalyse mood = new MoodAnalyse(message);
                 string actual = mood.AnalyserMethod();
             }
             catch (CustomException ex)
             {
+                //Addert
                 Console.WriteLine("Custom Exception :" + ex);
                 Assert.AreEqual(excepted, ex.Message);
             }
@@ -97,6 +101,18 @@ namespace MsTestMethodAnalyserProject
             {
                 Console.WriteLine("Worst Case Exception :" + ex);
             }
+        }
+        //Test Case 4.1 to match both class name and constructor name
+        [TestMethod]
+        public void CreateObjectOfMoodAnalyserClass()
+        {
+            //Arrange
+            MoodAnalyse mood = new MoodAnalyse();
+            //Act
+            var objectFromFactory = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalyse", "MoodAnalyse", null);
+            //Assert
+            objectFromFactory.Equals(mood);
+
         }
     }
 }
