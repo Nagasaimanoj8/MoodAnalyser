@@ -141,6 +141,25 @@ namespace MsTestMethodAnalyserProject
             //Assert
             expected.Equals(actual);
         }
+        /// TC-5.2 should throw NO_SUCH_CLASS exception with parameterized constructor.
+        /// </summary>
+        [TestMethod]
+        [TestCategory("Reflection")]
+        public void GivenClassNameImproperParameterizedConstructor_ShouldReturnMoodAnalysisException()
+        {
+            //Arrange
+            string expected = "Class not found";
+            try
+            {
+                //Act
+                object actual = MoodAnalyserFactory.MoodAnalyserParameterisedConstructor("MoodAnalyser.AnalyzeMood", "AnalyzeMood", "I am Parameter constructor");
+            }
+            catch (CustomException e)
+            {
+                //Assert
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
     }
 }
 
