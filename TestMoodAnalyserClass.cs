@@ -83,9 +83,19 @@ namespace MsTestMethodAnalyserProject
                 //Assert
                 Assert.AreEqual(expected, exception.Message);
             }
-
-
+        }
+        [TestMethod]
+        public void GivenMoodAnalyserReflection_ShouldReturnObject()
+        {
+            //Arrange
+            string msg = "null";
+            object expected = new MoodAnalyser(msg);
+            //Act
+            object obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalyse", "MoodAnalyser");
+           //Assert
+            expected.Equals(obj);
         }
     }
 }
+
     
