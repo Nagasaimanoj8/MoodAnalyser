@@ -47,6 +47,7 @@ namespace MsTestMethodAnalyserProject
             //Assert 
             Assert.AreEqual(expected, actual);
         }
+        ///UC3.1:Given null mood throw custom exception
         [TestMethod]
         public void Given_NullMood_Return_CustomException()
         {
