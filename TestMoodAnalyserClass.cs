@@ -114,7 +114,27 @@ namespace MsTestMethodAnalyserProject
             objectFromFactory.Equals(mood);
 
         }
-    }
+        //Test Case 4.2 To return exception when wrong class name is passed
+        [TestMethod]
+        public void CreateObjectOfMoodAnalyserClassWithWrongClassName()
+        {
+            //Arrange
+            MoodAnalyse mood = new MoodAnalyse();
+            //Act
+            try
+            {
+                var objectFromFactory = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyser.MoodAnalyseWrong", "MoodAnalyse", null);
+            }
+            //Assert
+            catch (CustomException exception)
+            {
+                Assert.AreEqual("No such class found", exception.Message);
+            }
+
+        }
+    }    
+
+    
 }
         
 
