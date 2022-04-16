@@ -74,6 +74,30 @@ namespace MsTestMethodAnalyserProject
                 Assert.AreEqual("Mood Should not be NULL", exception.Message);
             }
         }
+        //3.2GivenMoodAnalyserClass_ShouldReturn_MoodAnalyserObject
+        [TestMethod]
+        [TestCategory("Empty Exception")]
+        public void GivenEmptyShouldReturnCustomException()
+        {
+            ///Follow AAA strategy
+            ///Arrange , Act and in last Assert
+            string message = "";
+            string excepted = "Message cann't be Empty";
+            try
+            {
+                MoodAnalyse mood = new MoodAnalyse(message);
+                string actual = mood.AnalyserMethod();
+            }
+            catch (CustomException ex)
+            {
+                Console.WriteLine("Custom Exception :" + ex);
+                Assert.AreEqual(excepted, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Worst Case Exception :" + ex);
+            }
+        }
     }
 }
         
