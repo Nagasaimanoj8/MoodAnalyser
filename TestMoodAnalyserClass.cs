@@ -21,6 +21,19 @@ namespace MsTestMethodAnalyserProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        //UC 1.2: GivenAnyMoodShouldReturnHappy
+        [TestMethod]
+        [DataRow("I am in any mood")]
+        public void GivenAnyMoodShouldReturnHappy(string message)
+        {
+            //arrange
+            string expected = "HAPPY";
+            MoodAnalyse mood = new MoodAnalyse(message);
+            //Act
+            string actual = mood.AnalyserMethod();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 
