@@ -66,8 +66,26 @@ namespace MsTestMethodAnalyserProject
                 Assert.AreEqual(expected, exception.Message);
             }
         }
+        ///UC3.2: Given Empty Mood throw custom exception
+        [TestMethod]
+        public void Given_EmptyMood_Return_CustomException()
+        {
+            //Arrange
+            string msg = " ";
+            string expected = "Mood should not be empty";
+            try
+            {
+                //Act
+                MoodAnalyser mood = new MoodAnalyser(msg);
+            }
+            catch (CustomException exception)
+            {
+                //Assert
+                Assert.AreEqual(expected, exception.Message);
+            }
 
 
+        }
     }
 }
     
