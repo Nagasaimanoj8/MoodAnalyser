@@ -50,10 +50,16 @@ namespace MsTestMethodAnalyserProject
 
             catch (CustomException exception)
             {
-                Assert.AreEqual("Mood Should not be empty", exception.Message);
+                Console.WriteLine("Custom Exception :" + exception);
+                Assert.AreEqual(excepted, exception.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Worst Case Exception :" + ex);
             }
         }
     }
 }
+        
 
     
