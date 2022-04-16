@@ -95,6 +95,23 @@ namespace MsTestMethodAnalyserProject
            //Assert
             expected.Equals(obj);
         }
+        /// TC-4.2 should throw NO_SUCH_CLASS exception.
+       [TestMethod]
+        public void GivenClassNameImproper_ShouldReturnMoodAnalysisException()
+        {
+            //Arrange
+            string expected = "Class not found";
+            try
+            {
+                //Act
+                object actual = MoodAnalyserFactory.CreateMoodAnalyse("Mood.AnalyzeMood", "AnalyzeMood");
+            }
+            catch (CustomException e)
+            {
+                //Assert
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
     }
 }
 
