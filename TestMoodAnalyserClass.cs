@@ -46,7 +46,24 @@ namespace MsTestMethodAnalyserProject
             string actual = mood.AnalyseMood();
             //Assert 
             Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Given_NullMood_Return_CustomException()
+        {
+            //Arrange
+            string msg = null;
+            string expected = "Mood should not be null";
+            try
+            {
+                //Act
+                MoodAnalyser mood = new MoodAnalyser(msg); ;
+            }
 
+            catch (CustomException exception)
+            {
+                //Assert
+                Assert.AreEqual(expected, exception.Message);
+            }
         }
 
 
